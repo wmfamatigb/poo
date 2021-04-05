@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Student  extends Entity {
+public class Student  extends Entity  {
 
     private String motherName;
     private String grandFatherName;

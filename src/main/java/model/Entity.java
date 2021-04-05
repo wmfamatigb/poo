@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Entity {
+public class Entity  implements Serializable {
 
     protected String id;
     protected String name;

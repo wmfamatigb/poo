@@ -7,11 +7,15 @@ import java.util.List;
 
 public class StudentService {
 
-    private StudentDao dao = new StudentDao();
+    private StudentDao dao;
 
 
-    /*
-    public Student addStudent(Student student){
+    public StudentService () throws Exception{
+        dao = new StudentDao();
+    }
+
+
+    public Student addStudent(Student student) throws Exception{
         return dao.addStudent(student);
     }
 
@@ -30,6 +34,6 @@ public class StudentService {
     public void updateStudent(Student newStudent){
         dao.updateStudent(newStudent);
     }
-    */
+
 
 }
