@@ -53,6 +53,25 @@ public class Student  extends Entity  {
     public String getFatherPhoneNumber() {
         return fatherPhoneNumber;
     }
+
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", fatherName='" + fatherName + '\'' +
+                ", address=" + address +
+                ", birthday=" + birthday +
+                ", imageSource='" + imageSource + '\'' +
+                ", motherName='" + motherName + '\'' +
+                ", grandFatherName='" + grandFatherName + '\'' +
+                ", fatherCin='" + fatherCin + '\'' +
+                ", fatherPhoneNumber='" + fatherPhoneNumber + '\'' +
+                '}';
+    }
+
 }
 
 

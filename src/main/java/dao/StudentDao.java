@@ -2,25 +2,27 @@ package dao;
 
 import model.Student;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.*;
 
 public class StudentDao {
 
     List<Student> students;
+    private final String STUDENTS_FILENAME = "students";
+
 
 
     public  StudentDao() throws Exception{
         students = new LinkedList<>();
 
-
-        FileInputStream fileIn = new FileInputStream("students");
-        ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-        students =  (List<Student>) objectIn.readObject();
-        objectIn.close();
+        try {
+            FileInputStream fileIn = new FileInputStream(STUDENTS_FILENAME);
+            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+            students =  (List<Student>) objectIn.readObject();
+            objectIn.close();
+        }catch(FileNotFoundException e){
+            System.out.println("Init file not found");
+        }
 
     }
 
@@ -35,8 +37,7 @@ public class StudentDao {
         student.setId(newId);
         students.add(student);
 
-
-        FileOutputStream fileOut = new FileOutputStream("students");
+        FileOutputStream fileOut = new FileOutputStream(STUDENTS_FILENAME);
         ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
         objectOut.writeObject(students);
         objectOut.close();
@@ -44,14 +45,20 @@ public class StudentDao {
         return student;
     }
 
-    public void removeStudent(String id) {
+    public void removeStudent(String id) throws Exception {
         ListIterator<Student> it = students.listIterator();
         while(it.hasNext()){
             Student s = it.next();
             if(s.getId().equals(id)){
                 it.remove();
+                break;
             }
         }
+
+        FileOutputStream fileOut = new FileOutputStream(STUDENTS_FILENAME);
+        ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+        objectOut.writeObject(students);
+        objectOut.close();
     }
 
     public Student getStudent(String id) {
@@ -65,28 +72,18 @@ public class StudentDao {
         return null;
     }
 
-    public void updateStudent(Student newStudent) {
+    public void updateStudent(Student newStudent) throws Exception  {
         ListIterator<Student> it = students.listIterator();
         while(it.hasNext()){
             Student s = it.next();
             if(s.getId().equals(newStudent.getId())){
                 it.set(newStudent);
+                break;
             }
         }
-    }
-}
-
-
-class Main{
-    public static void main(String[] args) throws Exception{
-        StudentDao dao = new StudentDao();
-
-
-        Student s1 = new Student(), s2 = new Student();
-        dao.addStudent(s1);
-        dao.addStudent(s2);
-
-        List<Student> students = dao.getStudents();
-        System.out.println(students.size());
+        FileOutputStream fileOut = new FileOutputStream("students");
+        ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+        objectOut.writeObject(students);
+        objectOut.close();
     }
 }

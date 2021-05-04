@@ -9,9 +9,12 @@ public class StudentService {
 
     private StudentDao dao;
 
-
-    public StudentService () throws Exception{
-        dao = new StudentDao();
+    public StudentService () {
+        try{
+            dao = new StudentDao();
+        }catch (Exception e){
+            //
+        }
     }
 
 
@@ -19,7 +22,7 @@ public class StudentService {
         return dao.addStudent(student);
     }
 
-    public void removeStudent(String id) {
+    public void removeStudent(String id) throws Exception {
         dao.removeStudent(id);
     }
 
@@ -31,7 +34,7 @@ public class StudentService {
         return dao.getStudent(id);
     }
 
-    public void updateStudent(Student newStudent){
+    public void updateStudent(Student newStudent) throws Exception {
         dao.updateStudent(newStudent);
     }
 
