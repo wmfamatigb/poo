@@ -65,6 +65,7 @@ public class Cli {
             for(Student s : all ){
                 System.out.println(s);
                 System.out.println("----------");
+
             }
         }
 
