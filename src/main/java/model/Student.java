@@ -16,6 +16,7 @@ public class Student  extends Entity  {
         this.grandFatherName = grandFatherName;
         this.fatherCin = fatherCin;
         this.fatherPhoneNumber = fatherPhoneNumber;
+
     }
 
     public Student(){
