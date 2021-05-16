@@ -2,6 +2,7 @@ package model;
 
 public class Address {
 
+
     private String postalCode;
     private String roadNumber;
     private String roadName;
@@ -39,10 +40,5 @@ public class Address {
         this.city = city;
     }
 
-    public Address(String postalCode, String roadNumber, String roadName, String city) {
-        this.postalCode = postalCode;
-        this.roadNumber = roadNumber;
-        this.roadName = roadName;
-        this.city = city;
-    }
+
 }

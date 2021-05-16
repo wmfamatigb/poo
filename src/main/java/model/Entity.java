@@ -1,7 +1,6 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Entity  implements Serializable {
 
@@ -10,11 +9,19 @@ public class Entity  implements Serializable {
     protected String lastname;
     protected String fatherName;
     protected Address address;
-    protected Date birthday;
+    protected String birthday;
     protected String imageSource;
 
     public Entity(){
 
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -45,11 +52,12 @@ public class Entity  implements Serializable {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 
-    public Date getBirthday() {
+
+    public String getBirthday() {
         return birthday;
     }
 
@@ -65,21 +73,5 @@ public class Entity  implements Serializable {
         this.imageSource = imageSource;
     }
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Entity(String name, String lastname, String fatherName, Address address, Date birthday, String imageSource, String id) {
-        this.name = name;
-        this.lastname = lastname;
-        this.fatherName = fatherName;
-        this.address = address;
-        this.birthday = birthday;
-        this.imageSource = imageSource;
-        this.id = id;
-    }
 }

@@ -1,7 +1,8 @@
 package model;
 
 public class Activity {
-    private String code;
+
+    private String code; // functional id
     private String label;
     private Employee responsible;
     private int chargePrice;

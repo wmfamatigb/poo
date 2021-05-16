@@ -9,15 +9,6 @@ public class Employee extends  Entity {
     private String lastname;
     private String phoneNumber;
 
-
-    public Employee(String name, String lastname, String fatherName, Address address, Date birthday, String imageSource, String id, String cinNumber, String name1, String lastname1, String phoneNumber) {
-        super(name, lastname, fatherName, address, birthday, imageSource, id);
-        this.cinNumber = cinNumber;
-        this.name = name1;
-        this.lastname = lastname1;
-        this.phoneNumber = phoneNumber;
-    }
-
     public String getCinNumber() {
         return cinNumber;
     }

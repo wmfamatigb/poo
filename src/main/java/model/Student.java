@@ -1,7 +1,5 @@
 package model;
 
-import java.io.Serializable;
-import java.util.Date;
 
 public class Student  extends Entity  {
 
@@ -10,14 +8,6 @@ public class Student  extends Entity  {
     private String fatherCin;
     private String fatherPhoneNumber;
 
-    public Student(String name, String lastname, String fatherName, Address address, Date birthday, String imageSource, String id, String motherName, String grandFatherName, String fatherCin, String fatherPhoneNumber) {
-        super(name, lastname, fatherName, address, birthday, imageSource, id);
-        this.motherName = motherName;
-        this.grandFatherName = grandFatherName;
-        this.fatherCin = fatherCin;
-        this.fatherPhoneNumber = fatherPhoneNumber;
-
-    }
 
     public Student(){
         super();

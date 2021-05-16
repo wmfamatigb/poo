@@ -1,10 +1,12 @@
 package model;
 
+import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 
-public class Group {
+public class Group implements Serializable {
 
-    private String name;
+    private String name; // functional id
     private List<Student> students;
     private List<Activity> activities;
 
@@ -14,6 +16,11 @@ public class Group {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void addStudent(Student s ){
+        if(students == null) students = new LinkedList<>();
+        students.add(s);
     }
 
     public List<Student> getStudents() {
@@ -32,9 +39,13 @@ public class Group {
         this.activities = activities;
     }
 
-    public Group(String name, List<Student> students, List<Activity> activities) {
-        this.name = name;
-        this.students = students;
-        this.activities = activities;
+
+    @Override
+    public String toString() {
+        return "Group{" +
+                "name='" + name + '\'' +
+                ", students=" + students +
+                ", activities=" + activities +
+                '}';
     }
 }

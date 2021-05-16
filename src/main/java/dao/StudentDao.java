@@ -11,7 +11,6 @@ public class StudentDao {
     private final String STUDENTS_FILENAME = "students";
 
 
-
     public  StudentDao() throws Exception{
         students = new LinkedList<>();
 
@@ -21,14 +20,22 @@ public class StudentDao {
             students =  (List<Student>) objectIn.readObject();
             objectIn.close();
         }catch(FileNotFoundException e){
-            System.out.println("Init file not found");
         }
 
     }
 
 
     public List<Student> getStudents(){
-        return students;
+        try {
+            // reads list of students from a file
+            FileInputStream fileIn = new FileInputStream(STUDENTS_FILENAME);
+            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+            students =  (List<Student>) objectIn.readObject();
+            objectIn.close();
+            return students;
+        }catch(Exception e){
+            return Arrays.asList();
+        }
     }
 
 
