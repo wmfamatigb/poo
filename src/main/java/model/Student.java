@@ -1,7 +1,7 @@
 package model;
 
 
-public class Student  extends Entity  {
+public class Student  extends Entity {
 
     private String motherName;
     private String grandFatherName;

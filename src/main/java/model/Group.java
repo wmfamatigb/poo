@@ -1,10 +1,12 @@
 package model;
 
+import dao.HasId;
+
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Group implements Serializable {
+public class Group implements Serializable , HasId {
 
     private String name; // functional id
     private List<Student> students;
@@ -47,5 +49,15 @@ public class Group implements Serializable {
                 ", students=" + students +
                 ", activities=" + activities +
                 '}';
+    }
+
+    @Override
+    public String getId() {
+        return this.name;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.name = id;
     }
 }

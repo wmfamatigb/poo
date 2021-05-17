@@ -1,8 +1,10 @@
 package model;
 
+import dao.HasId;
+
 import java.io.Serializable;
 
-public class Entity  implements Serializable {
+public class Entity  implements Serializable , HasId {
 
     protected String id;
     protected String name;

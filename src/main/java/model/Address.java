@@ -1,8 +1,10 @@
 package model;
 
-public class Address {
+import dao.HasId;
 
+public class Address implements HasId {
 
+    private String id;
     private String postalCode;
     private String roadNumber;
     private String roadName;
@@ -41,4 +43,13 @@ public class Address {
     }
 
 
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id = id;
+    }
 }

@@ -1,6 +1,6 @@
 package service;
 
-import dao.GroupDao;
+import dao.impl.GroupDao;
 import model.Group;
 import model.Student;
 
@@ -15,19 +15,18 @@ public class GroupService {
 
 
     public void addGroup(Group group) throws  Exception{
-        groupDao.addGroup(group);
+        groupDao.save(group);
     }
 
     public List<Group> getGroups(){
-        return groupDao.getGroups();
+        return groupDao.findAll();
     }
 
-    public void addStudentToGroup(String studentId, String groupName) throws Exception{
+    public void addStudentToGroup(String studentId, String groupName) {
         Student s = studentService.getStudent(studentId);
-        Group g = groupDao.getGroup(groupName);
+        Group g = groupDao.findById(groupName);
         g.addStudent(s);
-        groupDao.updateGroup(g);
-
+        groupDao.save(g);
     }
 
 
