@@ -1,6 +1,7 @@
 package service;
 
 import dao.impl.GroupDao;
+import model.Activity;
 import model.Group;
 import model.Student;
 
@@ -30,10 +31,17 @@ public class GroupService {
     }
 
 
-    // todo
-    public void addActivityToGroup(String studentId, String groupName){
+
+    public void addActivityToGroup(String activityId, String groupName){
+        Activity a = ActivityService.getActivity(activityId);
+        Group g = groupDao.findById(groupName);
+        g.addActivity(a);
+        groupDao.save(g);
 
     }
 
+    public void removeGroup(String id)  {
+        dao.deleteById(id);
+    }
 
 }

@@ -87,5 +87,4 @@ public abstract class AbstractDao<T extends HasId> {
             throw new IllegalStateException("Unable to load state from disk");
         }
     }
-
 }
