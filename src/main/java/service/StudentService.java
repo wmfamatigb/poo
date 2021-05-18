@@ -13,7 +13,7 @@ public class StudentService {
     }
 
 
-    public Student addStudent(Student student) {
+    public Student(Student student) {
         return dao.save(student);
     }
 

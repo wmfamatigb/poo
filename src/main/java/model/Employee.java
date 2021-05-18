@@ -1,6 +1,8 @@
 package model;
 
 
+import java.util.LinkedList;
+
 public class Employee extends  Entity {
 
     private String cinNumber;
@@ -14,6 +16,11 @@ public class Employee extends  Entity {
 
     public void setCinNumber(String cinNumber) {
         this.cinNumber = cinNumber;
+    }
+
+    public void addGroup(Group g ){
+        if(Group == null) group = new LinkedList<>();
+        groups.add(g);
     }
 
     @Override
