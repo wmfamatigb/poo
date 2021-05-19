@@ -25,6 +25,12 @@ public class Group implements Serializable , HasId {
         students.add(s);
     }
 
+
+    public void addActivity(Activity activity){
+        if(activities == null) activities = new LinkedList<>();
+        activities.add(activity);
+    }
+
     public List<Student> getStudents() {
         return students;
     }

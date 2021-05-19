@@ -17,9 +17,9 @@ public class Cli {
     private static List<String> subHelpOptions = Arrays.asList("add", "update", "delete", "list");
 
 
-    private static StudentService studentService = new StudentService();
-    private static ActivityService activityService = new ActivityService();
-    private static GroupService groupService = new GroupService();
+    private static StudentService studentService = StudentService.getInstance();
+    private static ActivityService activityService = ActivityService.getInstance();
+    private static GroupService groupService =  GroupService.getInstance();
     private static EmployeeService employeeService = new EmployeeService();
 
 

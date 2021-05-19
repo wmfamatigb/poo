@@ -9,11 +9,19 @@ public class StudentService {
 
     private StudentDao dao = new StudentDao();
 
-    public StudentService () {
+    private StudentService () {
     }
 
 
-    public Student(Student student) {
+    private static StudentService instance = new StudentService();
+
+
+    public static StudentService getInstance(){
+        return instance;
+    }
+
+
+    public Student addStudent(Student student) {
         return dao.save(student);
     }
 
