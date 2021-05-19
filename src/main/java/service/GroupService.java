@@ -32,7 +32,8 @@ public class GroupService {
 
     // todo
     public void addActivityToGroup(String studentId, String groupName){
-
+        Student s;
+        System.out.println("any");
     }
 
 
