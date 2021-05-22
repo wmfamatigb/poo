@@ -15,8 +15,16 @@ public class EmployeeService {
     private GroupDao groupDao = new GroupDao();
     private GroupService groupService =  GroupService.getInstance();
 
+    private EmployeeService(){}
 
-    public void addEmployee(Employee employee) throws  Exception{
+    private static EmployeeService instance = new EmployeeService();
+
+    public static EmployeeService getInstance(){
+        return instance;
+    }
+
+
+    public void addEmployee(Employee employee) {
         employeeDao.save(employee);
     }
 

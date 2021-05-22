@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class StudentMenu extends  CliMenu{
 
-    private StudentService studentService = StudentService.getStudentInstance();
+    private StudentService studentService = StudentService.getInstance();
 
     @Override
     protected Map<String, ActionHandler> initHandlers() {

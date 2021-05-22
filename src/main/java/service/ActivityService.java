@@ -19,7 +19,7 @@ public class ActivityService {
 
 
     ActivityDao dao = new ActivityDao();
-    EmployeeService employeeService = new EmployeeService();
+    EmployeeService employeeService =  EmployeeService.getInstance();
 
     public Activity getActivity(String activityId) {
         return dao.findById(activityId);

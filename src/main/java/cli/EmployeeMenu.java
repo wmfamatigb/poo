@@ -5,6 +5,7 @@ import cli.UserInfoInput;
 import cli.handlers.ActionHandler;
 import model.Employee;
 import model.Student;
+import service.EmployeeService;
 import service.StudentService;
 
 import java.util.HashMap;
@@ -13,15 +14,16 @@ import java.util.Map;
 
 public class EmployeeMenu extends CliMenu {
 
-    private StudentService EmployeeService = EmployeeService.getInstance();
+    private EmployeeService employeeService = EmployeeService.getInstance();
+
 
     @Override
-    Map<String, ActionHandler> initHandlers() {
+    public Map<String, ActionHandler> initHandlers() {
         Map<String, ActionHandler> result = new HashMap<>();
 
         result.put("list", new ActionHandler() {
             public void handle() {
-                List<Employee> employees = EmployeeService.getEmployee();
+                List<Employee> employees = employeeService.getEmployees();
                 for(Employee e : employees) {
                     System.out.println(e);
                 }
@@ -30,7 +32,7 @@ public class EmployeeMenu extends CliMenu {
 
         result.put("add", new ActionHandler() {
             public void handle() {
-                Student s;
+                Employee e;
                 while(true){
                     e = (Employee) UserInfoInput.readUserInput(Employee.class);
                     if(e == null)
@@ -38,7 +40,7 @@ public class EmployeeMenu extends CliMenu {
                     else
                         break;
                 }
-                EmployeeService.addEmployee(e);
+                employeeService.addEmployee(e);
             }
         });
         return result;
