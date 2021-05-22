@@ -10,7 +10,7 @@ import java.util.Map;
 public abstract class CliMenu {
 
     protected Map<String, ActionHandler> handlers = initHandlers();
-    abstract Map<String, ActionHandler> initHandlers();
+    protected abstract Map<String, ActionHandler> initHandlers();
     private ActionHandler exitHandler = new ExitHandler();
 
     List<String> getOptions(){

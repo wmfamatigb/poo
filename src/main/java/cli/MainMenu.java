@@ -10,7 +10,7 @@ public class MainMenu extends   CliMenu {
 
 
     @Override
-    Map<String, ActionHandler> initHandlers() {
+    protected Map<String, ActionHandler> initHandlers() {
         Map<String, ActionHandler> result = new HashMap<>();
 
         result.put("students", new ActionHandler() {
@@ -23,8 +23,23 @@ public class MainMenu extends   CliMenu {
             public void handle() {
                 Cli.state = CliState.GROUP_MENU;
             }
+
+        });
+
+        result.put("employee", new ActionHandler() {
+            public void handle() {
+                Cli.state = CliState.EMPLOYEE_MENU;
+            }
+
+        });
+        result.put("activity", new ActionHandler() {
+            public void handle() {
+                Cli.state = CliState.ACTIVITY_MENU;
+            }
+
         });
         return result;
+
     }
 
 }

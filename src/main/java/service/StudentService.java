@@ -13,11 +13,11 @@ public class StudentService {
     }
 
 
-    private static StudentService instance = new StudentService();
+    private static StudentService studentInstance = new StudentService();
 
 
-    public static StudentService getInstance(){
-        return instance;
+    public static StudentService getStudentInstance(){
+        return studentInstance;
     }
 
 
