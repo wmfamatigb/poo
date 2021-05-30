@@ -15,6 +15,15 @@ public abstract class AbstractDao<T extends HasId> {
         return elements;
     }
 
+    /**
+     * For updating or saving a new instance in the database (in memory database)
+     * if you give it an element without an id, this means that the element does not
+     * exist in the database, so to add it, we assign it a new uuid and then save it.
+     * else if the element already has an id, this means that we already have it in the database
+     * so we look for the existing element (comparing using the ids) then we set this instance instead (override)
+     * @param element
+     * @return
+     */
     public T save(T element){
         if(element.getId() == null){
             String newId = UUID.randomUUID().toString();

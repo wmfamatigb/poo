@@ -8,7 +8,7 @@ public class StudentDao  extends AbstractDao<Student> {
     // ***************************
     // singleton design pattern
 
-    // private constructor so that client code is forced to use the getInstance() method (new StudentDao() will not be accepted)
+    // private constructor so that client code is forced to use the getInstance() method to create instance (new StudentDao() will not be accepted)
     private StudentDao(){
     }
 
