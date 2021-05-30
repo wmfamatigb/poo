@@ -56,4 +56,14 @@ public class Activity  implements HasId {
     public void setId(String id) {
         this.code= id;
     }
+
+    @Override
+    public String toString() {
+        return "Activity{" +
+                "code='" + code + '\'' +
+                ", label='" + label + '\'' +
+                ", responsible=" + responsible +
+                ", chargePrice=" + chargePrice +
+                '}';
+    }
 }

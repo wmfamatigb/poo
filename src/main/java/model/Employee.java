@@ -44,4 +44,21 @@ public class Employee extends  Entity {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                ", id='" + id + '\'' +
+                "cinNumber='" + cinNumber + '\'' +
+                ", name='" + name + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", name='" + name + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", fatherName='" + fatherName + '\'' +
+                ", address=" + address +
+                ", birthday='" + birthday + '\'' +
+                ", imageSource='" + imageSource + '\'' +
+                '}';
+    }
 }

@@ -1,90 +1,66 @@
 package dao;
 
 
-import java.io.*;
 import java.util.*;
 
 
 public abstract class AbstractDao<T extends HasId> {
 
-    private final String STORE_FILENAME;
+    private List<T> elements = new LinkedList<>();
 
-    public AbstractDao() {
-        STORE_FILENAME = this.getClass().getSimpleName() + ".data";
+    protected AbstractDao() {
     }
 
     public List<T> findAll(){
-        return loadStateFromDisk();
+        return elements;
     }
-
 
     public T save(T element){
         if(element.getId() == null){
             String newId = UUID.randomUUID().toString();
             element.setId(newId);
         }
-        List<T> currentElements = loadStateFromDisk();
 
-        ListIterator<T> it = currentElements.listIterator();
+        // see if we already have the element in the collection (by comparing ids), if so, update
+        ListIterator<T> it = elements.listIterator(); // use the list iterator object to loop over the list elements
         while(it.hasNext()){
             T curr = it.next();
-            if(curr.getId().equals(element.getId())){
+            if(curr.getId().equals(element.getId())){ // found an object with the same id
                 // update
                 it.set(element);
-                persistStateOnDisk(currentElements);
                 return element;
             }
         }
-        // add new element
-        currentElements.add(element);
-        persistStateOnDisk(currentElements);
+        // we don't already have the object in store, so add new element
+        elements.add(element);
         return element;
     }
 
-    public void deleteById(String id){
-        List<T> elements = loadStateFromDisk();
-        ListIterator<T> it = elements.listIterator();
+
+    /**
+     * search the element by id in the list, if found, remove it
+     * returns true if an element is deleted
+     */
+    public boolean deleteById(String id){
+        ListIterator<T> it = elements.listIterator(); // use list iterator object to loop over list elements
         while(it.hasNext()){
-            T s = it.next();
+            T s = it.next(); // get the next element in the list
             if(s.getId().equals(id)){
                 it.remove();
-                break;
+                return true;
             }
         }
-        persistStateOnDisk(elements);
+        return false; // no element is found with the given id
     }
 
 
+    /**
+     * Search element in the list by id, if not found, returns null.
+     */
     public T findById(String id){
-        List<T> elements = loadStateFromDisk();
         for(T e : elements)
             if(e.getId().equals(id)) return e;
-        return null;
-    }
 
-
-    private void persistStateOnDisk(List<T> elements){
-        try{
-            FileOutputStream fileOut = new FileOutputStream(STORE_FILENAME);
-            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-            objectOut.writeObject(elements);
-            objectOut.close();
-        }catch(Exception e){
-            throw new IllegalStateException("failed to persist state on disk");
-        }
-    }
-
-    private List<T> loadStateFromDisk(){
-        try {
-            FileInputStream fileIn = new FileInputStream(STORE_FILENAME);
-            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-            List<T>  elements =  (List<T>) objectIn.readObject();
-            objectIn.close();
-            return elements;
-        }catch(FileNotFoundException e){
-            return new LinkedList<>();
-        }catch(Exception e){
-            throw new IllegalStateException("Unable to load state from disk");
-        }
+        return null; // no element having the given id has been found after iterating on the list
     }
 }

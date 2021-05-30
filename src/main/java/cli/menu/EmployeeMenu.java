@@ -1,12 +1,9 @@
-package cli;
+package cli.menu;
 
-import cli.CliMenu;
-import cli.UserInfoInput;
+import cli.CliUtils;
 import cli.handlers.ActionHandler;
 import model.Employee;
-import model.Student;
 import service.EmployeeService;
-import service.StudentService;
 
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +21,7 @@ public class EmployeeMenu extends CliMenu {
         result.put("list", new ActionHandler() {
             public void handle() {
                 List<Employee> employees = employeeService.getEmployees();
+                if(employees.isEmpty()) System.out.println("Empty.");
                 for(Employee e : employees) {
                     System.out.println(e);
                 }
@@ -34,7 +32,7 @@ public class EmployeeMenu extends CliMenu {
             public void handle() {
                 Employee e;
                 while(true){
-                    e = (Employee) UserInfoInput.readUserInput(Employee.class);
+                    e = (Employee) CliUtils.createInstanceFromUserInput(Employee.class);
                     if(e == null)
                         System.out.println("Failed to read user input ");
                     else
@@ -43,6 +41,7 @@ public class EmployeeMenu extends CliMenu {
                 employeeService.addEmployee(e);
             }
         });
+
         return result;
     }
 }

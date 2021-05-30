@@ -25,7 +25,7 @@ public class GroupService {
 
 
 
-    private GroupDao groupDao = new GroupDao();
+    private GroupDao groupDao = GroupDao.getInstance();
     private StudentService studentService  =  StudentService.getInstance();
     private ActivityService activityService = ActivityService.getInstance();
 

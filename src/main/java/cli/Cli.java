@@ -1,9 +1,10 @@
 package cli;
 
 
+import cli.menu.*;
+
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 public class Cli {
 
@@ -15,6 +16,8 @@ public class Cli {
         menuDictionary.put(CliState.MAIN_MENU, new MainMenu());
         menuDictionary.put(CliState.STUDENT_MENU, new StudentMenu());
         menuDictionary.put(CliState.EMPLOYEE_MENU, new EmployeeMenu());
+        menuDictionary.put(CliState.GROUP_MENU, new GroupMenu());
+        menuDictionary.put(CliState.ACTIVITY_MENU, new ActivityMenu());
     }
 
 
@@ -24,31 +27,26 @@ public class Cli {
         while(true){
             System.out.println("Please select an option");
             CliMenu currentMenu = menuDictionary.get(state);
-            int i =0;
-
 
             for(String option :  currentMenu.getOptions() ){ // a java way of iterating over a list of elements
-                System.out.println(++i + ". " + option);
+                System.out.println( "* " + option);
             }
-            String userSelectedOption = getUserInput();
+            String userSelectedOption = CliUtils.readUserInput();
 
             if(!currentMenu.supports(userSelectedOption)){
                 System.out.print("Unsupported operation: '" + userSelectedOption +"', allowed values: " );
                 currentMenu.getOptions().forEach(e -> System.out.print(e + " ")); // another java way to iterate over a list of elements
                 System.out.println();
+                CliUtils.addMargin();
                 continue; // return to the begging of the loop
             }
 
             currentMenu.handleOption(userSelectedOption);
-
+            CliUtils.addMargin();
         }
     }
 
 
-    private static String getUserInput(){
-        Scanner sc = new Scanner(System.in);
-        String input = sc.next();
-        return input;
-    }
+
 
 }

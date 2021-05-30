@@ -18,7 +18,7 @@ public class ActivityService {
     }
 
 
-    ActivityDao dao = new ActivityDao();
+    ActivityDao dao = ActivityDao.getInstance();
     EmployeeService employeeService =  EmployeeService.getInstance();
 
     public Activity getActivity(String activityId) {

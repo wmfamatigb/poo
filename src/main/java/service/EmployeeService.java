@@ -11,8 +11,8 @@ import java.util.List;
 
 public class EmployeeService {
 
-    private EmployeeDao employeeDao = new EmployeeDao();
-    private GroupDao groupDao = new GroupDao();
+    private EmployeeDao employeeDao = EmployeeDao.getInstance();
+    private GroupDao groupDao = GroupDao.getInstance();
     private GroupService groupService =  GroupService.getInstance();
 
     private EmployeeService(){}

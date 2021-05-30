@@ -1,20 +1,35 @@
 package cli;
 
 import model.Entity;
-import model.Group;
-import model.Student;
 
 import java.lang.reflect.Method;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
 
-public class UserInfoInput {
+/**
+ * Utility class
+ */
+public class CliUtils {
 
 
+    /**
+     * Like scanf() in C.  => read variables from user.
+     * @return
+     */
+    public static String readUserInput(){
+        Scanner sc = new Scanner(System.in);
+        String input = sc.next();
+        return input;
+    }
 
 
-    public static Object readUserInput( Class<?> cls) {
+    /**
+     * Given a certain class as input (Student, Group, Activity ...),
+     * This method will create a new instance of that class and read all the properties from the user input,
+     * then return the instance.
+     * Implementation is based on java reflection API.
+     */
+    public static Object createInstanceFromUserInput( Class<?> cls) {
         try{
             cls.getFields();
 
@@ -35,7 +50,7 @@ public class UserInfoInput {
             }
 
             // read user input for the entity class
-            if(!(result instanceof  Entity)) return result;
+            if(!(result instanceof Entity)) return result;
             for(Method m : Entity.class.getDeclaredMethods()){
                 if(m.getName().startsWith("set")){
 
@@ -56,11 +71,12 @@ public class UserInfoInput {
     }
 
 
-    public static void main(String[] args)  throws  Exception{
-        Group s = (Group)  readUserInput(Group.class);
-        System.out.println(s);
+    /**
+     * printf ______\n
+     */
+    public static void addMargin(){
+        System.out.println("__________________________________________________________________________________");
+        System.out.println();
     }
-
-
 
 }

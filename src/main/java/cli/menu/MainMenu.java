@@ -1,10 +1,12 @@
-package cli;
+package cli.menu;
 
+import cli.Cli;
+import cli.CliState;
 import cli.handlers.ActionHandler;
 
 import java.util.*;
 
-public class MainMenu extends   CliMenu {
+public class MainMenu extends CliMenu {
 
     private Map<String, ActionHandler> handlers = new HashMap<>();
 

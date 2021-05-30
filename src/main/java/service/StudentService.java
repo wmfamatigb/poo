@@ -7,7 +7,7 @@ import java.util.List;
 
 public class StudentService {
 
-    private StudentDao dao = new StudentDao();
+    private StudentDao dao = StudentDao.getInstance();
 
     private StudentService () {
     }
@@ -25,8 +25,8 @@ public class StudentService {
         return dao.save(student);
     }
 
-    public void removeStudent(String id)  {
-        dao.deleteById(id);
+    public boolean removeStudent(String id)  {
+        return dao.deleteById(id);
     }
 
     public List<Student> getStudents(){

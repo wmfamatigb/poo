@@ -52,4 +52,16 @@ public class Address implements HasId {
     public void setId(String id) {
         this.id = id;
     }
+
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id='" + id + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", roadNumber='" + roadNumber + '\'' +
+                ", roadName='" + roadName + '\'' +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }
