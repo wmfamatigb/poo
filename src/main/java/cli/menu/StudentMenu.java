@@ -60,7 +60,7 @@ public class StudentMenu extends CliMenu {
         result.put("update", new ActionHandler() {
             @Override
             public void handle() {
-                System.out.println("Give me the id of the student you want to delete: ");
+                System.out.println("Give me the id of the student you want to update: ");
                 String  targetStudentId = CliUtils.readUserInput();
 
                 // see if student exists on the database

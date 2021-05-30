@@ -23,7 +23,7 @@ public class Cli3 {
             System.out.println("\n\t 1: Gestion Eleves");
             System.out.println("\n\t 2: Gestion Groupes");
             System.out.println("\n\t 3: Gestion Activité/cours");
-            System.out.println("\n\t 3: Gestion Employées");
+            System.out.println("\n\t 4: Gestion Employées");
             System.out.println("\n\t 0: Quitter l'application");
             System.out.println("\n ******* tapez votre choix **********\n");
 
@@ -42,12 +42,24 @@ public class Cli3 {
                 case 1:
                     gestionEleve();
                     break;
+                case 2:
+                    gestionGroupe();
+                    break;
+
+                case 3:
+                    gestionActivity();
+                    break;
+
+                case 4:
+                    gestionEmployee();
+                    break;
 
                 case 0:
                     System.out.println("byyyyeeeee");
                     System.exit(0);
                     break;
-                default:
+
+                    default:
                     System.out.println("ERROR! Votre choix est invalide!");
                     break;
 
@@ -95,6 +107,21 @@ public class Cli3 {
                  Student s = (Student) CliUtils.createInstanceFromUserInput(Student.class);
                 studentService.addStudent(s);
                 break;
+            case 2:
+                System.out.println("Donner l'id de l'eleve à supprimer");
+                String input = sc.next();
+                studentService.removeStudent(input);
+                System.out.println("Eleve supprimé avec succé ...");
+                break;
+
+            case 3:
+                System.out.println("Donner l'id de l'eleve à modifier");
+                String id =sc.next();
+                String  targetStudentId = CliUtils.readUserInput();
+
+                break;
+
+
             case 4:
                 List<Student> result =  studentService.getStudents();
                 if(result.isEmpty()){
@@ -112,4 +139,127 @@ public class Cli3 {
 
 
     }
+    public static void gestionGroupe(){
+        int choix;
+
+        System.out.println("\n ******* Gestion Des Groupes *******\n");
+
+        System.out.println("\n\t 1: Ajouter un Groupe");
+        System.out.println("\n\t 2: Supprimer un Groupe ");
+        System.out.println("\n\t 3: modifier un Groupe ");
+        System.out.println("\n\t 4: Afficher les Groupe ");
+        System.out.println("\n\t 0: Retour au menu principale");
+        System.out.println("\n ******* tapez votre choix *******\n");
+
+        Scanner sc = new Scanner(System.in);
+        try{
+            choix = sc.nextInt();
+        }catch(Exception e){
+            System.out.println("il faut donner un entier");
+            return;
+        }
+
+        switch (choix) {
+
+            case 1:
+                //System.out.println("Lahdha haw jitek");
+
+                break;
+            case 2:
+               // System.out.println("Lahdha haw jitek");
+
+                break;
+            case 3:
+               // System.out.println("Lahdha haw jitek");
+
+                break;
+            case 4:
+                //System.out.println("Lahdha haw jitek");
+
+                break;
+        }
+
+    }
+    public static void gestionActivity(){
+        int choix;
+
+        System.out.println("\n ******* Gestion Des Activités *******\n");
+
+        System.out.println("\n\t 1: Ajouter Activités");
+        System.out.println("\n\t 2: Supprimer Activités ");
+        System.out.println("\n\t 3: modifier Activités ");
+        System.out.println("\n\t 4: Afficher Activités ");
+        System.out.println("\n\t 0: Retour au menu principale");
+        System.out.println("\n ******* tapez votre choix *******\n");
+
+        Scanner sc = new Scanner(System.in);
+        try{
+            choix = sc.nextInt();
+        }catch(Exception e){
+            System.out.println("il faut donner un entier");
+            return;
+        }
+
+        switch (choix) {
+
+            case 1:
+               // System.out.println("Lahdha haw jitek");
+
+                break;
+            case 2:
+               // System.out.println("Lahdha haw jitek");
+
+                break;
+            case 3:
+               // System.out.println("Lahdha haw jitek");
+
+                break;
+            case 4:
+                //System.out.println("Lahdha haw jitek");
+
+                break;
+        }
+    }
+    public static void gestionEmployee(){
+        int choix;
+
+        System.out.println("\n ******* Gestion Des Employées *******\n");
+
+        System.out.println("\n\t 1: Ajouter Employé");
+        System.out.println("\n\t 2: Supprimer Employé ");
+        System.out.println("\n\t 3: modifier Employé ");
+        System.out.println("\n\t 4: Afficher les Employé ");
+        System.out.println("\n\t 0: Retour au menu principale");
+        System.out.println("\n ******* tapez votre choix *******\n");
+
+        Scanner sc = new Scanner(System.in);
+        try{
+            choix = sc.nextInt();
+        }catch(Exception e){
+            System.out.println("il faut donner un entier");
+            return;
+        }
+
+        switch (choix) {
+
+            case 1:
+                //System.out.println("Lahdha haw jitek");
+
+                break;
+            case 2:
+                //System.out.println("Lahdha haw jitek");
+
+                break;
+            case 3:
+                //System.out.println("Lahdha haw jitek");
+
+                break;
+            case 4:
+                //System.out.println("Lahdha haw jitek");
+
+                break;
+        }
+    }
+
+
 }
