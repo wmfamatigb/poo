@@ -164,6 +164,7 @@ public class Cli3 {
         System.out.println("\n\t 4: ajouter eleve à un groupe ");
         System.out.println("\n\t 5: ajouter activité à un groupe ");
         System.out.println("\n\t 6: afficher les eleves d'un group ");
+        System.out.println("\n\t 7: supprimer un eleves d'un group ");
         System.out.println("\n\t 0: Retour au menu principale");
         System.out.println("\n ******* tapez votre choix *******\n");
 
@@ -224,7 +225,7 @@ public class Cli3 {
                 break;
 
             case 6:
-                System.out.println("donner l'id du group");
+                System.out.println("donner le nom du group");
                 String grupName = sc.next();
                 Group gg = groupService.getGroup(grupName);
                 List<Student> groupStudents = gg.getStudents();
@@ -235,6 +236,15 @@ public class Cli3 {
                 for(Student s : groupStudents){
                     System.out.println(s);
                 }
+                break;
+            case 7:
+                System.out.println("Donner l'id de l'eleve à supprimer ");
+                String idSupInput = sc.next();
+                System.out.println("Donner le nom du group ");
+                String grpSupInput = sc.next();
+                groupService.removeStudentFromGroup(idSupInput,grpSupInput);
+                System.out.println("Eleve Supprimé avec succés ...");
+
                 break;
             default:
                 break;

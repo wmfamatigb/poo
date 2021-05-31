@@ -41,6 +41,27 @@ public class GroupService {
         return groupDao.findAll();
     }
 
+    public void removeStudentFromGroup(String studentId, String groupName){
+        Student s = studentService.getStudent(studentId);
+        Group g = groupDao.findById(groupName);
+
+        if(g == null ) {
+            System.out.println("non valid group id");
+            return;
+        }
+
+        if(s == null){
+            System.out.println("non valid student id");
+            return;
+        }
+
+        g.removeStudent(s);
+        groupDao.save(g);
+
+    }
+
+
+
     public void addStudentToGroup(String studentId, String groupName) {
         Student s = studentService.getStudent(studentId);
         Group g = groupDao.findById(groupName);

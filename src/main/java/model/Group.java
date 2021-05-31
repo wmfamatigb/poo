@@ -25,6 +25,10 @@ public class Group implements Serializable , HasId {
         students.add(s);
     }
 
+    public void removeStudent(Student s) {
+        students.remove(s);
+    }
+
 
     public void addActivity(Activity activity){
         if(activities == null) activities = new LinkedList<>();
@@ -66,4 +70,5 @@ public class Group implements Serializable , HasId {
     public void setId(String id) {
         this.name = id;
     }
+
 }
