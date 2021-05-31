@@ -6,13 +6,13 @@ import java.util.Scanner;
 
 import model.Student;
 import service.StudentService;
-
+import service.GroupService;
 
 public class Cli3 {
 
 
     private static StudentService studentService = StudentService.getInstance();
-
+    private static GroupService groupService = GroupService.getInstance();
 
     public static void main(String[] args) {
         int choix;
@@ -115,17 +115,30 @@ public class Cli3 {
                 break;
 
             case 3:
-                System.out.println("Donner l'id de l'eleve à modifier");
-                String id =sc.next();
+
+                System.out.println("donner l'id de l'eleve ");
                 String  targetStudentId = CliUtils.readUserInput();
 
+                // see if student exists on the database
+                Student student = studentService.getStudent(targetStudentId);
+                if( student == null ){
+                    // no student found with the given id
+                    System.out.println("Pas d'eleve avec l'id fournis !");
+                    return;
+                }
+
+                // if we are here, that means the student is not null
+                System.out.println("Ecrire les nouvelles valeurs de l'eleve : ");
+                Student newStudentVersion = (Student) CliUtils.createInstanceFromUserInput(Student.class);
+                newStudentVersion.setId(student.getId());
+                studentService.updateStudent(newStudentVersion);
                 break;
 
 
             case 4:
                 List<Student> result =  studentService.getStudents();
                 if(result.isEmpty()){
-                    System.out.println("Empty list.");
+                    System.out.println("liste vide .");
                 }
                 for(int i =0;i<result.size();i++){
                     System.out.println( result.get(i) );
@@ -134,7 +147,7 @@ public class Cli3 {
 
 
             default:
-                throw new IllegalStateException("Unexpected value: " + choix);
+                throw new IllegalStateException("Valeur Erronée: " + choix);
         }
 
 
@@ -148,6 +161,8 @@ public class Cli3 {
         System.out.println("\n\t 2: Supprimer un Groupe ");
         System.out.println("\n\t 3: modifier un Groupe ");
         System.out.println("\n\t 4: Afficher les Groupe ");
+        System.out.println("\n\t 5: ajouter eleve à un groupe ");
+        System.out.println("\n\t 6: ajouter activité à un groupe ");
         System.out.println("\n\t 0: Retour au menu principale");
         System.out.println("\n ******* tapez votre choix *******\n");
 
@@ -174,6 +189,24 @@ public class Cli3 {
 
                 break;
             case 4:
+                System.out.println("Donner l'id de l'eleve ");
+                String idinput = sc.next();
+                System.out.println("Donner le nom du group ");
+                String grpinput = sc.next();
+                groupService.addStudentToGroup(idinput,grpinput);
+                System.out.println("Eleve ajouté avec succés ...");
+
+                break;
+            case 5:
+                System.out.println("Donner l'id de l'activité ");
+                String activityIdInput = sc.next();
+                System.out.println("Donner le nom du group ");
+                String activityGroupInput = sc.next();
+                groupService.addActivityToGroup(activityIdInput,activityGroupInput);
+                System.out.println("Activité ajouté avec succés ...");
+
+                break;
+            case 6:
                 //System.out.println("Lahdha haw jitek");
 
                 break;
