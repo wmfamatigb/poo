@@ -4,6 +4,7 @@ package cli;
 import java.util.List;
 import java.util.Scanner;
 
+import model.Group;
 import model.Student;
 import service.StudentService;
 import service.GroupService;
@@ -14,7 +15,7 @@ public class Cli3 {
     private static StudentService studentService = StudentService.getInstance();
     private static GroupService groupService = GroupService.getInstance();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         int choix;
 
         while(true) {
@@ -152,17 +153,16 @@ public class Cli3 {
 
 
     }
-    public static void gestionGroupe(){
+    public static void gestionGroupe() throws Exception {
         int choix;
 
         System.out.println("\n ******* Gestion Des Groupes *******\n");
 
         System.out.println("\n\t 1: Ajouter un Groupe");
         System.out.println("\n\t 2: Supprimer un Groupe ");
-        System.out.println("\n\t 3: modifier un Groupe ");
-        System.out.println("\n\t 4: Afficher les Groupe ");
-        System.out.println("\n\t 5: ajouter eleve à un groupe ");
-        System.out.println("\n\t 6: ajouter activité à un groupe ");
+        System.out.println("\n\t 3: Afficher les Groupe ");
+        System.out.println("\n\t 4: ajouter eleve à un groupe ");
+        System.out.println("\n\t 5: ajouter activité à un groupe ");
         System.out.println("\n\t 0: Retour au menu principale");
         System.out.println("\n ******* tapez votre choix *******\n");
 
@@ -177,15 +177,32 @@ public class Cli3 {
         switch (choix) {
 
             case 1:
-                //System.out.println("Lahdha haw jitek");
+
+
+                Group g = new Group();
+                System.out.println("give the name of the group");
+                String input = sc.next();
+                g.setName(input);
+                System.out.println("give me the id of the group");
+                input = sc.next();
+                g.setId(input);
 
                 break;
             case 2:
-               // System.out.println("Lahdha haw jitek");
+                System.out.println("Donner l'id du groupe à supprimer");
+                String grpNameinput = sc.next();
+                groupService.removeGroup(grpNameinput);
+                System.out.println("Groupe supprimé avec succé ...");
 
                 break;
             case 3:
-               // System.out.println("Lahdha haw jitek");
+                List<Group> result =  groupService.getGroups();
+                if(result.isEmpty()){
+                    System.out.println("liste vide .");
+                }
+                for(int i =0;i<result.size();i++){
+                    System.out.println( result.get(i) );
+                }
 
                 break;
             case 4:

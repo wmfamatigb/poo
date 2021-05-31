@@ -51,7 +51,7 @@ public class Group implements Serializable , HasId {
     @Override
     public String toString() {
         return "Group{" +
-                "name='" + name + '\'' +
+                "name='" + name +  '\'' +
                 ", students=" + students +
                 ", activities=" + activities +
                 '}';
