@@ -163,6 +163,7 @@ public class Cli3 {
         System.out.println("\n\t 3: Afficher les Groupe ");
         System.out.println("\n\t 4: ajouter eleve à un groupe ");
         System.out.println("\n\t 5: ajouter activité à un groupe ");
+        System.out.println("\n\t 6: afficher les eleves d'un group ");
         System.out.println("\n\t 0: Retour au menu principale");
         System.out.println("\n ******* tapez votre choix *******\n");
 
@@ -220,6 +221,20 @@ public class Cli3 {
                 groupService.addActivityToGroup(activityIdInput,activityGroupInput);
                 System.out.println("Activité ajouté avec succés ...");
 
+                break;
+
+            case 6:
+                System.out.println("donner l'id du group");
+                String grupName = sc.next();
+                Group gg = groupService.getGroup(grupName);
+                List<Student> groupStudents = gg.getStudents();
+                if(groupStudents == null) {
+                    System.out.println("pas d'etudiant dans ce group");
+                    break;
+                }
+                for(Student s : groupStudents){
+                    System.out.println(s);
+                }
                 break;
             default:
                 break;

@@ -44,6 +44,17 @@ public class GroupService {
     public void addStudentToGroup(String studentId, String groupName) {
         Student s = studentService.getStudent(studentId);
         Group g = groupDao.findById(groupName);
+
+        if(g == null ) {
+            System.out.println("non valid group id");
+            return;
+        }
+
+        if(s == null){
+            System.out.println("non valid student id");
+            return;
+        }
+
         g.addStudent(s);
         groupDao.save(g);
     }
