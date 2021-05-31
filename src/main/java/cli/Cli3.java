@@ -183,9 +183,7 @@ public class Cli3 {
                 System.out.println("give the name of the group");
                 String input = sc.next();
                 g.setName(input);
-                System.out.println("give me the id of the group");
-                input = sc.next();
-                g.setId(input);
+                groupService.addGroup(g);
 
                 break;
             case 2:
@@ -198,7 +196,7 @@ public class Cli3 {
             case 3:
                 List<Group> result =  groupService.getGroups();
                 if(result.isEmpty()){
-                    System.out.println("liste vide .");
+                    System.out.println("liste est vide .");
                 }
                 for(int i =0;i<result.size();i++){
                     System.out.println( result.get(i) );
@@ -223,9 +221,7 @@ public class Cli3 {
                 System.out.println("Activité ajouté avec succés ...");
 
                 break;
-            case 6:
-                //System.out.println("Lahdha haw jitek");
-
+            default:
                 break;
         }
 

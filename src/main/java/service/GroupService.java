@@ -12,10 +12,9 @@ public class GroupService {
 
 
     private GroupService(){
-
     }
 
-    private static GroupService instance = GroupService.getInstance();
+    private static GroupService instance = new GroupService();
 
     public static GroupService getInstance(){
         return instance;
