@@ -14,6 +14,7 @@ public class CliUtils {
 
     /**
      * Like scanf() in C.  => read variables from user.
+     * rayen chniti
      * @return
      */
     public static String readUserInput(){
